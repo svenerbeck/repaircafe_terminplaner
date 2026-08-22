@@ -10,24 +10,24 @@ und den immer gleichen Link verschicken.
 **Für die Teilnehmer** (ein Link, sonst nichts):
 
 ```
-   Namensliste                Meine Seite              Bestätigung
- ┌────────────────┐        ┌────────────────┐      ┌────────────────┐
- │ Erika M.  ✓    │        │     Hallo      │      │       ✓        │
- │ Hans B.   –    │  ───►  │ Ingrid Muster  │ ──►  │ Ingrid Muster  │
- │ Ingrid M. offen│        │                │      │ Du bist ange-  │
- │ Gerda V.  offen│        │ Kommst du?     │      │ meldet!        │
- └────────────────┘        │ ┌────────────┐ │      ├────────────────┤
-   auf den eigenen         │ │JA,ich komme│ │      │ Kuchen? [____] │
-   Namen tippen            │ └────────────┘ │      │ [Eintragen]    │
-                           │ │Nein, ich   │ │      └────────────────┘
-                           │ │kann nicht  │ │
-                           │ └────────────┘ │
-                           └────────────────┘
+        Namensliste                 Meine Seite                 Bestätigung
+  ┌─────────────────────┐     ┌─────────────────────┐     ┌─────────────────────┐
+  │  Erika M.        ✓  │     │        Hallo        │     │          ✓          │
+  │   🍰 Apfelkuchen    │     │    INGRID MUSTER    │     │    INGRID MUSTER    │
+  ├─────────────────────┤     │Ich bin nicht Ingrid │     │ Du bist angemeldet! │
+  │Hans B.    kann nicht│     │ Muster → zur Liste  │     ├─────────────────────┤
+  ├─────────────────────┤ ──► ├─────────────────────┤ ──► │  Bringst du einen   │
+  │Ingrid M.      offen │     │Kommst du zum Termin?│     │     Kuchen mit?     │
+  ├─────────────────────┤     │  [ JA, ich komme ]  │     │ [                 ] │
+  │Gerda V.       offen │     │[ Nein, kann nicht ] │     │  [   Eintragen   ]  │
+  └─────────────────────┘     └─────────────────────┘     └─────────────────────┘
+      auf den eigenen
+       Namen tippen
 ```
 
 Kein Login. Keine Tabelle. Keine App. Pro Bildschirm genau **eine** Entscheidung.
 
-**Für Eva:** eine ganz normale Google-Tabelle, die außer ihr niemand sieht.
+**Für Eva:** eine ganz normale Google-Tabelle, die ausser ihr niemand sieht.
 
 ---
 
@@ -72,7 +72,7 @@ echten Namen untereinander eintragen. **Nur Spalte A** – der Rest füllt sich 
 |---|---|
 | Titel | Repair Café Musterstadt |
 | Termin | Samstag, 12. September, 14 bis 17 Uhr |
-| Ort | Gemeindehaus, Hauptstraße 5 |
+| Ort | Gemeindehaus, Hauptstrasse 5 |
 | Hinweis | Bitte bis Donnerstag antworten. *(darf leer bleiben)* |
 | Anmeldung offen | Ja |
 | Übersicht anzeigen | Ja *(zeigt allen, wer kommt und wer Kuchen bringt)* |
@@ -112,7 +112,7 @@ Google und Jimdo verlinkt nur dorthin. Für die Leute sieht es aus wie ein Klick
 |---|---|
 | sehen, wer noch nicht geantwortet hat | „Wer hat noch nicht geantwortet?" |
 | den nächsten Termin starten | „Neuen Termin starten (Antworten leeren)" |
-| die Anmeldung beenden | „Anmeldung schließen / öffnen" |
+| die Anmeldung beenden | „Anmeldung schliessen / öffnen" |
 | den Link nochmal verschicken | „Link zum Verschicken anzeigen" |
 
 **Der Link bleibt für immer derselbe.** Auch nach einem neuen Termin. Wer ihn sich
@@ -132,7 +132,7 @@ dazuschreiben. Sofort in der Liste sichtbar, ohne irgendetwas neu bereitzustelle
 - Jede einzelne Eingabe wird zusätzlich im Blatt **„Protokoll"** mitgeschrieben und
   dort **nie wieder verändert**. Selbst wenn im Blatt „Teilnehmer" versehentlich etwas
   gelöscht wird: im Protokoll steht jede Antwort mit Uhrzeit und lässt sich zurückholen.
-- Google Tabellen hat außerdem **Datei → Versionsverlauf** – damit lässt sich die
+- Google Tabellen hat ausserdem **Datei → Versionsverlauf** – damit lässt sich die
   ganze Tabelle auf jeden früheren Stand zurücksetzen.
 - Zwei Leute gleichzeitig sind kein Problem, das Skript arbeitet der Reihe nach ab.
 

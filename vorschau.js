@@ -23,7 +23,13 @@ const daten = {
     ['Hans <b>Beispiel</b>','Nein','',''],
     ['Ingrid Muster','','',''],
     ['Karl-Heinz Schmidt-Wollersheim','Ja','Marmorkuchen & Streusel','2026-08-21 09:00'],
-    ['Gerda Vogel','','','']
+    ['Gerda Vogel','','',''],
+    ['Änne Öttinger','Ja','Zopf',''],
+    ['Zora Wyss','','',''],
+    ['Beat Steiner','Nein','',''],
+    ['Ueli Ammann','Ja','Nusstorte',''],
+    ['Béatrice Aeschbacher','','',''],
+    ['Otto Zbinden','','','']
   ],
   Protokoll: [['Zeitpunkt','Termin','Name','Antwort','Kuchen']]
 };

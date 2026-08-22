@@ -23,6 +23,11 @@ var SPALTE_ANTWORT = 2;
 var SPALTE_KUCHEN  = 3;
 var SPALTE_ZEIT    = 4;
 
+// Steht in der Namensliste vor dem Kuchen. Bewusst ein Emoji: es ist farbig und
+// auf einen Blick erkennbar. Fällt es auf einem sehr alten Gerät aus, steht der
+// Kuchenname als Text daneben – die Information geht also nie verloren.
+var KUCHEN_ZEICHEN = '\uD83C\uDF70';
+
 
 /* ==================================================================
    1. WEB-APP: Was die Teilnehmer im Handy sehen
@@ -93,6 +98,18 @@ function seiteNamensliste_() {
   }
 
   h += '<p class="anleitung">Tippe unten auf <b>deinen Namen</b>.</p>';
+
+  // Alphabetisch, damit jeder weiss, wo er suchen muss – unabhängig davon,
+  // in welcher Reihenfolge die Namen in der Tabelle stehen.
+  alle.sort(function (a, b) { return a.name.localeCompare(b.name, 'de'); });
+
+  // Wer nicht scrollt, findet sich nicht. Bei längeren Listen deshalb ansagen,
+  // dass unten noch etwas kommt.
+  if (alle.length > 8) {
+    h += '<p class="wisch">Alle <b>' + alle.length + ' Namen</b> stehen untereinander &ndash; '
+       + 'wisch nach unten, bis du deinen siehst.</p>';
+  }
+
   h += '<div class="liste">';
 
   if (!alle.length) {
@@ -108,9 +125,12 @@ function seiteNamensliste_() {
     h += '<a class="zeile ' + zustand.klasse + '" href="' + appUrl_() + '?name=' + encodeURIComponent(t.name) + '">'
        +   '<span class="zname">' + esc_(t.name) + '</span>'
        +   '<span class="zstatus">' + zustand.text + '</span>'
+       +   (t.kuchen ? '<span class="zkuchen">' + KUCHEN_ZEICHEN + ' ' + esc_(t.kuchen) + '</span>' : '')
        + '</a>';
   }
   h += '</div>';
+
+  if (alle.length > 8) h += '<p class="ende">&mdash; Ende der Liste &mdash;</p>';
 
   if (cfg.uebersicht) h += uebersichtBlock_(alle);
 
@@ -134,6 +154,10 @@ function seitePerson_(name, warAenderung) {
   h += '<div class="box person">';
   h += '<p class="klein">Hallo</p>';
   h += '<h2 class="grossername">' + esc_(t.name) + '</h2>';
+  // Der Ausweg für alle, die sich vertippt haben – direkt unter dem Namen,
+  // damit man ihn im selben Blick hat wie den Fehler.
+  h += '<a class="binnicht" href="' + appUrl_() + '">Ich bin nicht '
+     + esc_(t.name) + ' &rarr; zur&uuml;ck zur Liste</a>';
   if (!warAenderung && t.antwort) {
     h += '<p class="bisher">Bisher eingetragen: <b>'
        + (t.antwort === 'Ja' ? 'Ich komme' : 'Ich kann nicht')
@@ -237,7 +261,7 @@ function uebersichtBlock_(alle) {
   for (var i = 0; i < alle.length; i++) {
     if (alle[i].antwort === 'Ja') {
       kommen.push(alle[i].name);
-      if (alle[i].kuchen) kuchen.push(alle[i].name + ': ' + alle[i].kuchen);
+      if (alle[i].kuchen) kuchen.push(KUCHEN_ZEICHEN + ' ' + alle[i].name + ': ' + alle[i].kuchen);
     }
   }
   var h = '<div class="box uebersicht">';
@@ -395,25 +419,30 @@ function css_() {
     '.ort{margin:0;font-size:18px;color:#4a5560}',
     '.hinweis-text{margin:10px 0 0;font-size:18px;color:#4a5560}',
 
-    '.anleitung{margin:0 0 14px;font-size:21px;text-align:center}',
+    '.anleitung{margin:0 0 10px;font-size:21px;text-align:center}',
+    '.wisch{margin:0 0 16px;font-size:17px;text-align:center;color:#4a5560;',
+      'background:#fffdf5;border:2px solid #e2c98a;border-radius:10px;padding:10px 12px}',
+    '.ende{margin:-4px 0 20px;font-size:16px;text-align:center;color:#7a838c}',
 
     '.box{background:#fff;border:2px solid #d3dae1;border-radius:10px;',
       'padding:18px;margin:0 0 16px}',
 
     '.liste{margin:0 0 20px}',
     '.zeile{display:block;background:#fff;border:2px solid #cfd7de;border-radius:10px;',
-      'padding:20px 16px;margin:0 0 12px;text-decoration:none;color:#1a1a1a;overflow:hidden}',
+      'padding:20px 16px;margin:0 0 18px;text-decoration:none;color:#1a1a1a;overflow:hidden}',
     '.zname{font-size:24px;font-weight:bold;float:left;max-width:60%}',
     '.zstatus{font-size:17px;float:right;padding-top:5px;text-align:right}',
     '.zeile.ja{border-color:#2e7d4f;background:#f1f9f4}',
     '.zeile.ja .zstatus{color:#1d6b3f;font-weight:bold}',
     '.zeile.nein{background:#f4f6f8}',
     '.zeile.nein .zstatus{color:#6b7681}',
+    '.zkuchen{clear:both;display:block;padding-top:8px;font-size:17px;color:#4a5560}',
     '.zeile.offen{border-color:#c98a12}',
     '.zeile.offen .zstatus{color:#a06c00;font-weight:bold}',
 
     '.person{text-align:center;background:#fffdf5;border-color:#c98a12}',
     '.grossername{margin:2px 0 8px;font-size:32px;line-height:1.2}',
+    '.binnicht{display:inline-block;margin:2px 0 4px;padding:8px 4px;font-size:17px;color:#144d8c}',
     '.bisher{margin:8px 0 4px;font-size:19px}',
     '.klein{margin:6px 0 0;font-size:16px;color:#5b6670}',
 
@@ -465,7 +494,7 @@ function onOpen() {
     .addItem('Wer hat noch nicht geantwortet?', 'werFehltNoch')
     .addSeparator()
     .addItem('Neuen Termin starten (Antworten leeren)', 'neuerTermin')
-    .addItem('Anmeldung schließen / öffnen', 'anmeldungUmschalten')
+    .addItem('Anmeldung schliessen / öffnen', 'anmeldungUmschalten')
     .addToUi();
 }
 
@@ -482,7 +511,7 @@ function einrichten() {
       ['Was',                'Wert'],
       ['Titel',              'Repair Café'],
       ['Termin',             'Samstag, 12. September, 14 bis 17 Uhr'],
-      ['Ort',                'Gemeindehaus, Hauptstraße 5'],
+      ['Ort',                'Gemeindehaus, Hauptstrasse 5'],
       ['Hinweis',            ''],
       ['Anmeldung offen',    'Ja'],
       ['Übersicht anzeigen', 'Ja']
@@ -594,7 +623,7 @@ function neuerTermin() {
   var ui = SpreadsheetApp.getUi();
 
   var frage = ui.prompt('Neuer Termin',
-    'Wie heißt der neue Termin?\n(z.B. "Samstag, 10. Oktober, 14 bis 17 Uhr")\n\n' +
+    'Wie heisst der neue Termin?\n(z.B. "Samstag, 10. Oktober, 14 bis 17 Uhr")\n\n' +
     'Alle bisherigen Antworten werden geleert. Sie bleiben im Blatt "Protokoll" erhalten.',
     ui.ButtonSet.OK_CANCEL);
 

@@ -7,19 +7,19 @@ Kein Login, keine App, keine Tabelle, in der jemand versehentlich etwas löschen
 Gebaut für Handys – ausdrücklich auch für alte.
 
 ```
-   Namensliste                Meine Seite              Bestätigung
- ┌────────────────┐        ┌────────────────┐      ┌────────────────┐
- │ Erika M.  ✓    │        │     Hallo      │      │       ✓        │
- │ Hans B.   –    │  ───►  │ Ingrid Muster  │ ──►  │ Ingrid Muster  │
- │ Ingrid M. offen│        │                │      │ Du bist ange-  │
- │ Gerda V.  offen│        │ Kommst du?     │      │ meldet!        │
- └────────────────┘        │ ┌────────────┐ │      ├────────────────┤
-   auf den eigenen         │ │JA,ich komme│ │      │ Kuchen? [____] │
-   Namen tippen            │ └────────────┘ │      │ [Eintragen]    │
-                           │ │Nein, ich   │ │      └────────────────┘
-                           │ │kann nicht  │ │
-                           │ └────────────┘ │
-                           └────────────────┘
+        Namensliste                 Meine Seite                 Bestätigung
+  ┌─────────────────────┐     ┌─────────────────────┐     ┌─────────────────────┐
+  │  Erika M.        ✓  │     │        Hallo        │     │          ✓          │
+  │   🍰 Apfelkuchen    │     │    INGRID MUSTER    │     │    INGRID MUSTER    │
+  ├─────────────────────┤     │Ich bin nicht Ingrid │     │ Du bist angemeldet! │
+  │Hans B.    kann nicht│     │ Muster → zur Liste  │     ├─────────────────────┤
+  ├─────────────────────┤ ──► ├─────────────────────┤ ──► │  Bringst du einen   │
+  │Ingrid M.      offen │     │Kommst du zum Termin?│     │     Kuchen mit?     │
+  ├─────────────────────┤     │  [ JA, ich komme ]  │     │ [                 ] │
+  │Gerda V.       offen │     │[ Nein, kann nicht ] │     │  [   Eintragen   ]  │
+  └─────────────────────┘     └─────────────────────┘     └─────────────────────┘
+      auf den eigenen
+       Namen tippen
 ```
 
 Pro Bildschirm genau **eine** Entscheidung. Die Kuchenfrage kommt bewusst erst nach der
@@ -80,10 +80,30 @@ Alles läuft über das Menü **Repair Café** in der Tabelle:
 | Link zum Verschicken anzeigen | Link plus fertiger Text für WhatsApp oder E-Mail |
 | Wer hat noch nicht geantwortet? | Zusagen, Absagen und die offenen Namen |
 | Neuen Termin starten | Leert die Antworten, setzt den neuen Termin, öffnet die Anmeldung |
-| Anmeldung schließen / öffnen | Der Link zeigt dann einen freundlichen Hinweis |
+| Anmeldung schliessen / öffnen | Der Link zeigt dann einen freundlichen Hinweis |
 
 Neue Person im Verein? Einfach unten in Spalte A dazuschreiben – sofort in der Liste,
 ohne erneutes Bereitstellen.
+
+## Für Ungeübte gebaut
+
+Die Zielgruppe ist grösstenteils über 70. Daraus folgen ein paar Entscheidungen, die
+bewusst gegen den ersten Reflex gehen:
+
+- **Keine Sicherheitsabfrage vor der Antwort.** Ein „Bist du wirklich Ingrid Muster?"
+  fängt Verrutscher, aber keine Lesefehler – wer den falschen Namen antippt, bestätigt
+  ihn auch. Der Preis wäre ein zusätzlicher Schritt für alle, bei jedem Termin.
+  Stattdessen steht der eigene Name gross auf der Antwortseite und darunter der Ausweg:
+  *„Ich bin nicht Ingrid Muster → zurück zur Liste"*.
+- **Fehler sind sichtbar und billig statt verhindert.** Neben jedem Namen steht der
+  Status, jede Antwort lässt sich jederzeit selbst ändern, und im Protokoll steht
+  ohnehin alles. Das trägt weiter als eine Mauer davor.
+- **Namen alphabetisch**, unabhängig von der Reihenfolge in der Tabelle.
+- **Ansage, dass die Liste weitergeht.** Wer nicht scrollt, findet sich nicht – bei mehr
+  als acht Namen steht deshalb oben, wie viele es sind, und unten, wo die Liste endet.
+- **Der Kuchen steht in der Liste.** Man sieht auf einen Blick, wer schon einen mitbringt,
+  und wird gleichzeitig daran erinnert, dass es die Frage überhaupt gibt.
+- **Getippt wird nur beim Kuchen.** Alles andere ist Antippen.
 
 ## Alte Geräte
 
